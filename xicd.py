@@ -4,6 +4,26 @@ import ctypes
 import time
 
 
+class GuitarStrumBar:
+    def __init__(self, canvas, x, y):
+        self.canvas = canvas
+        self.x = x
+        self.y = y
+        self.strum_up = canvas.create_rectangle(x, y, x + 150, y + 25, fill="white", outline="gray")
+        self.strum_down = canvas.create_rectangle(x, y + 25, x + 150, y + 50, fill="white", outline="gray")
+
+    def update(self, button_state):
+        if button_state & xinput.XINPUT_GAMEPAD_DPAD_UP:
+            self.canvas.itemconfig(self.strum_up, fill="gray")
+        else:
+            self.canvas.itemconfig(self.strum_up, fill="white")
+
+        if button_state & xinput.XINPUT_GAMEPAD_DPAD_DOWN:
+            self.canvas.itemconfig(self.strum_down, fill="gray")
+        else:
+            self.canvas.itemconfig(self.strum_down, fill="white")
+
+
 class GuitarButton:
     def __init__(self, canvas, x1, y1, x2, y2, color, button_value):
         self.canvas = canvas
@@ -40,6 +60,7 @@ class Xicd(tk.Frame):
         self.orange_button = GuitarButton(self.canvas, 440, 0, 540, 150,
                                           "orange",
                                           xinput.XINPUT_GAMEPAD_LEFT_SHOULDER)
+        self.strum_bar = GuitarStrumBar(self.canvas, 575, 50)
         self.canvas.pack(fill=tk.BOTH, expand=True)
 
     def update_buttons(self):
@@ -52,6 +73,7 @@ class Xicd(tk.Frame):
             self.yellow_button.update(button_state)
             self.blue_button.update(button_state)
             self.orange_button.update(button_state)
+            self.strum_bar.update(button_state)
             self.update()
             time.sleep(0.01)
 
