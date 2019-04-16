@@ -34,9 +34,9 @@ class Xicd(tk.Frame):
         self.red_button = GuitarButton(
             self.canvas, 110, 0, 210, 150, "red", xinput.XINPUT_GAMEPAD_B)
         self.yellow_button = GuitarButton(
-            self.canvas, 220, 0, 320, 150, "yellow", xinput.XINPUT_GAMEPAD_X)
+            self.canvas, 220, 0, 320, 150, "yellow", xinput.XINPUT_GAMEPAD_Y)
         self.blue_button = GuitarButton(
-            self.canvas, 330, 0, 430, 150, "blue", xinput.XINPUT_GAMEPAD_Y)
+            self.canvas, 330, 0, 430, 150, "blue", xinput.XINPUT_GAMEPAD_X)
         self.orange_button = GuitarButton(self.canvas, 440, 0, 540, 150,
                                           "orange",
                                           xinput.XINPUT_GAMEPAD_LEFT_SHOULDER)
