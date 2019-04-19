@@ -3,7 +3,6 @@ import xinput
 import ctypes
 import time
 
-
 class GuitarStrumBar:
     def __init__(self, canvas, x, y):
         self.canvas = canvas
