@@ -31,7 +31,7 @@ class XINPUT_STATE(ctypes.Structure):
                 ("Gamepad", XINPUT_GAMEPAD)]
 
 
-xinput = ctypes.windll.xinput1_3
+xinput = ctypes.windll.xinput9_1_0
 
 xinput_get_state = xinput.XInputGetState
 xinput_get_state.argtypes = [

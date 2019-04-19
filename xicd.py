@@ -41,7 +41,11 @@ class GuitarButton:
 class Xicd(tk.Frame):
     def __init__(self, master=None):
         tk.Frame.__init__(self, master)
+        self.running = True
         self.init_window()
+
+    def exit_window(self):
+        self.running = False
 
     def init_window(self):
         self.master.title("Xicd")
@@ -62,10 +66,11 @@ class Xicd(tk.Frame):
                                           xinput.XINPUT_GAMEPAD_LEFT_SHOULDER)
         self.strum_bar = GuitarStrumBar(self.canvas, 575, 50)
         self.canvas.pack(fill=tk.BOTH, expand=True)
+        self.master.protocol("WM_DELETE_WINDOW", self.exit_window)
 
     def update_buttons(self):
         controller_state = xinput.XINPUT_STATE()
-        while True:
+        while self.running:
             xinput.xinput_get_state(0, ctypes.byref(controller_state))
             button_state = controller_state.Gamepad.wButtons
             self.green_button.update(button_state)
