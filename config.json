@@ -1,0 +1,43 @@
+{
+    "overlay": "guitar",
+    "overlays": {
+        "guitar": {
+            "file": "overlays/guitar.py",
+            "options": {
+                "background_color": "cyan",
+                "button": {
+                    "width": 100,
+                    "height": 175,
+                    "green": [
+                        0,
+                        0
+                    ],
+                    "red": [
+                        110,
+                        25
+                    ],
+                    "yellow": [
+                        220,
+                        0
+                    ],
+                    "blue": [
+                        330,
+                        25
+                    ],
+                    "orange": [
+                        440,
+                        0
+                    ]
+                },
+                "strum_bar": {
+                    "position": [
+                        575,
+                        50
+                    ],
+                    "width": 300,
+                    "height": 75
+                }
+            }
+        }
+    }
+}
